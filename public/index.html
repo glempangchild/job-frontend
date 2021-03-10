@@ -5,13 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/linearicons/style.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/vendor/chartist/css/chartist-custom.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/css/main.css">
+    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= BASE_URL %>assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= BASE_URL %>assets/img/favicon.png">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="wrapper">
+       <div id="app"></div>
+    </div>
     <!-- built files will be auto injected -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="<%= BASE_URL %>assets/vendor/jquery/jquery.min.js"></script>
+	<script src="<%= BASE_URL %>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%= BASE_URL %>assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="<%= BASE_URL %>assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="<%= BASE_URL %>assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="<%= BASE_URL %>assets/scripts/klorofil-common.js"></script>
   </body>
 </html>

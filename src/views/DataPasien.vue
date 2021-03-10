@@ -7,6 +7,7 @@
     <!-- Main Sidebar Container -->
     <Sidebar />
     <Content />
+
     <Footer />
   </div>
 </template>
@@ -16,9 +17,9 @@
 import Navbar from "../components/layouts/Navbar.vue";
 import Sidebar from "../components/layouts/Sidebar.vue";
 import Footer from "../components/layouts/Footer.vue";
-import Content from "../components/home/Content.vue";
+import Content from "../components/pasien/Content.vue";
 export default {
-  name: "App",
+  name: "DataPasien",
   components: {
     Navbar,
     Sidebar,
