@@ -44,21 +44,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                        <tr v-for="(person, i) in dokter" :key="i">
+                          <td>{{ person.id_dokter }}</td>
+                          <td>{{ person.nama_dokter }}</td>
+                          <td>{{ person.jenis_kelamin }}</td>
+                          <td>{{ person.telphone }}</td>
+                          <td>{{ person.alamat }}</td>
+                          <td>{{ person.spesialis }}</td>
                           <td>
                             <button
+                              @click="getEditData(person)"
                               type="button"
                               class="btn btn-primary btn-sm"
                             >
                               Edit</button
                             >&nbsp;
-                            <button type="button" class="btn btn-sm btn-danger">
+                            <button
+                              @click="deleteData(person.id_dokter)"
+                              type="button" class="btn btn-sm btn-danger">
                               Hapus
                             </button>
                           </td>
@@ -82,20 +85,40 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import insertModal from "./InsertModal.vue";
 export default {
     data(){
         return{
             showInsertModal: false,
+            dokter: [],
         }
     },
     components: {
     insertModal,
   },
+  created() {
+    this.tampilDokter();
+  },
   methods: {
+      tampilDokter(){
+         axios.get('http://localhost/phprest/api/dokter/read.php')
+        .then(response => {
+          this.dokter = response.data;
+        })
+        .catch(error => {
+          console.log('NO' , error);
+        });
+      },
       tampilInsertModal() {
       this.showInsertModal = true;
     },
+    getEditData(person){
+      console.log(person);
+    },
+    deleteData(id){
+      console.log(id);
+    }
   },
 }
 </script>
