@@ -12,7 +12,8 @@
               <p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
             </div>
             <div class="panel-body">
-              <div class="alert alert-success" role="alert" >
+              <div class="alert alert-success" role="alert" v-if="alert.error">
+                {{ alert.pesan }}
               </div>
               <div class="row">
                 <div class="col-lg-12">
@@ -79,6 +80,7 @@
       <!-- END MAIN CONTENT -->
     </div>
     <insertModal
+      v-on:test="changeAlert($event)"
       v-if="showInsertModal"
       @close="showInsertModal=false"
     ></insertModal>
@@ -92,6 +94,10 @@ export default {
         return{
             showInsertModal: false,
             dokter: [],
+            alert: {
+              pesan : "",
+              error : false
+            }
         }
     },
     components: {
@@ -118,7 +124,12 @@ export default {
     },
     deleteData(id){
       console.log(id);
-    }
+    },
+    changeAlert(msg){
+      this.alert.error = msg.error;
+      this.alert.pesan = msg.pesan;
+      this.tampilDokter();
+    },
   },
 }
 </script>

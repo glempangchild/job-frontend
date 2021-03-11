@@ -108,7 +108,9 @@ export default {
       tambahDokter(){
         axios.post('http://localhost/phprest/api/dokter/create.php', JSON.stringify(this.data))
         .then(response => {
-          console.log(response.data['message']);
+          this.alert.pesan = response.data['message'];
+          this.alert.error = true;
+          this.$emit('test', this.alert);
           this.$emit('close');
         })
         .catch(error => {
