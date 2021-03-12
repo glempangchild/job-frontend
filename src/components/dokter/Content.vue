@@ -84,14 +84,28 @@
       v-if="showInsertModal"
       @close="showInsertModal=false"
     ></insertModal>
+    <editModal
+      v-on:test="changeAlert($event)"
+      :dataDokter="editData"
+      v-if="showeditModal"
+      @close="showeditModal= false" 
+    >
+      
+    </editModal>
   </div>
 </template>
 <script>
 import axios from "axios";
 import insertModal from "./InsertModal.vue";
+import editModal from "./EditModal.vue";
 export default {
     data(){
         return{
+            data:{
+              id_dokter : null
+            },
+            editData:null,
+            showeditModal:false,
             showInsertModal: false,
             dokter: [],
             alert: {
@@ -102,6 +116,7 @@ export default {
     },
     components: {
     insertModal,
+    editModal
   },
   created() {
     this.tampilDokter();
@@ -120,10 +135,22 @@ export default {
       this.showInsertModal = true;
     },
     getEditData(person){
-      console.log(person);
+      this.editData = person;
+      this.showeditModal = true;
     },
     deleteData(id){
-      console.log(id);
+      this.data.id_dokter = id;
+      axios.delete('http://localhost/phprest/api/dokter/delete.php', {data:{
+        id_dokter:id
+      }})
+        .then(response => {
+          this.tampilDokter();
+          this.alert.pesan = response.data['message'];
+          this.alert.error = true;
+        })
+        .catch(error => {
+          console.log('NO ' , error);
+        });
     },
     changeAlert(msg){
       this.alert.error = msg.error;
